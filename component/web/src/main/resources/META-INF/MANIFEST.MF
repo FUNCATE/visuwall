@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Archiver-Version: Plexus Archiver
+Created-By: Apache Maven
+Built-By: bogo
+Build-Jdk: 1.7.0_80
+Main-Class: Bootstrap
+Bootstrap-MainClass: fr.norad.visuwall.cli.Main
+Copyright: n0rad
+Project-Creator: n0rad
+Project-CreatorId: fr.norad.visuwall
+Project-Name: Visuwall - Web
+Project-Version: 0.3.6-SNAPSHOT
+Project-Website: http://norad.fr/parent-java/visuwall/component/visuwa
+ ll-web
+VisuwallVersion: 0.3.6-SNAPSHOT
+

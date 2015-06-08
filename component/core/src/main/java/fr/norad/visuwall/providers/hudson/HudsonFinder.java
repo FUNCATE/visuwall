@@ -41,6 +41,7 @@ import fr.norad.visuwall.providers.hudson.resource.Hudson;
 import fr.norad.visuwall.providers.hudson.resource.HudsonUser;
 import fr.norad.visuwall.providers.hudson.resource.Job;
 import fr.norad.visuwall.providers.hudson.resource.ListView;
+import fr.norad.visuwall.providers.hudson.resource.MatrixBuild;
 import fr.norad.visuwall.providers.hudson.resource.MatrixProject;
 import fr.norad.visuwall.providers.hudson.resource.MavenModuleSet;
 import fr.norad.visuwall.providers.hudson.resource.MavenModuleSetBuild;
@@ -112,7 +113,11 @@ class HudsonFinder {
             try {
                 setBuild = client.resource(buildUrl, FreeStyleBuild.class);
             } catch (ResourceNotFoundException e1) {
-                throw new HudsonBuildNotFoundException("Build #" + buildNumber + " not found for job " + jobName, e1);
+            	try {
+                    setBuild = client.resource(buildUrl, MatrixBuild.class);
+                } catch (ResourceNotFoundException e2) {
+                    throw new HudsonBuildNotFoundException("Build #" + buildNumber + " not found for job " + jobName, e2);
+                }
             }
         }
 

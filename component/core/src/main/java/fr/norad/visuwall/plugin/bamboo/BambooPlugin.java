@@ -57,7 +57,8 @@ public class BambooPlugin implements VisuwallPlugin<BambooConnection> {
 
     @Override
     public SoftwareId getSoftwareId(URL url, Map<String, String> properties) throws SoftwareNotFoundException {
-        Preconditions.checkNotNull(url, "url is mandatory");
+    	
+/*        Preconditions.checkNotNull(url, "url is mandatory");
         try {
             SoftwareId softwareId = new SoftwareId();
             softwareId.setName("Bamboo");
@@ -66,6 +67,10 @@ public class BambooPlugin implements VisuwallPlugin<BambooConnection> {
         } catch (BambooVersionNotFoundException e) {
             throw new SoftwareNotFoundException("Url " + url + " is not compatible with Jenkins");
         }
+        
+        
+*/    
+    	throw new SoftwareNotFoundException("Url " + url + " is not compatible with Jenkins");	
     }
 
     @Override
