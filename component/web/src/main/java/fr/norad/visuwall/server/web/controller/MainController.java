@@ -20,20 +20,25 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import net.awired.ajsl.web.domain.JsServiceMap;
 import net.awired.ajsl.web.service.interfaces.CssService;
 import net.awired.ajsl.web.service.interfaces.JsService;
 import net.awired.ajsl.web.service.interfaces.JsonService;
 import fr.norad.visuwall.core.business.service.WallHolderService;
 import fr.norad.visuwall.server.application.VisuwallApplication;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+
 import com.google.common.base.Predicate;
 import com.google.common.collect.Maps;
 
@@ -58,7 +63,7 @@ public class MainController {
     WallHolderService wallService;
 
     @RequestMapping(ROOT_CONTEXT)
-    public ModelAndView getIndex(ModelMap modelMap) throws Exception {
+    public ModelAndView getIndex(ModelMap modelMap, HttpServletRequest request) throws Exception {
         Map<String, Object> jsData = new HashMap<String, Object>();
         Map<String, Object> init = new HashMap<String, Object>();
         jsData.put("init", init);
@@ -85,6 +90,9 @@ public class MainController {
         modelMap.put("jsLinks", jsService.getJsLinks("res/", jsMap));
         modelMap.put("cssLinks", cssService.getCssLinks("res/"));
         modelMap.put("version", visuwallApplication.getVersion());
+        
+        System.out.println(request.getServletPath());
+        System.out.println(jsMap);
         return new ModelAndView("index", modelMap);
     }
 

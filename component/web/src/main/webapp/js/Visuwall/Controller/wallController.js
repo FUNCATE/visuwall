@@ -12,6 +12,8 @@ define(['Visuwall/Process/WallProcess'], function(WallProcess) {
 				$this.currentWall.close();
 			}
 			$this.currentWall = new WallProcess(wallName);
+			//$('#viewName').html(wallName);
+			document.getElementById("viewName").innerHTML="Jenkins View: " + wallName;
 		};
 
 	};
